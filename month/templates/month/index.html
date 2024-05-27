@@ -1,0 +1,8 @@
+{% comment %} {% extends "base.html "%} {% block page_title %} All Challenges {%
+endblock %} {% endcomment %} {% block content %}
+<ul>
+  {% for month in months %}
+  <li><a href="{% url 'app_challenge' month %}">{{ month | title }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
