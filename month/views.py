@@ -8,25 +8,6 @@ from .models import Month
 
 # Create your views here.
 
-
-# app_settings_func = {
-#     "january": "Eat no meat for the entire month!",
-#     "febuary": "Walk for at least 20 minutes every day!",
-#     "march": "Learn Django for at least 20 minutes every day!",
-#     "april": "Eat no meat for the entire month!",
-#     "may": "Walk for at least 20 minutes every day!",
-#     "june": "Learn Django for at least 20 minutes every day!",
-#     "july": "Eat no meat for the entire month!",
-#     "august": "Walk for at least 20 minutes every day!",
-#     "september": "Learn Django for at least 20 minutes every day!",
-#     "october": "Eat no meat for the entire month!",
-#     "november": "Walk for at least 20 minutes every day!",
-#     "december": "Eat no meat for the entire month!"
-# }
-
-# Create your views here.
-
-
 def index(request):
     all_months = Month.objects.all()
     months = list(all_months)
@@ -46,12 +27,12 @@ def app_settings_with_number(request, app):
 
 
 def app_settings(request, app):
-    all_months = Month.objects.all()
     try:
-        challenge_text = all_months[app]
-        return render(request, "month/app.html", {
-            "text": challenge_text,
-            "month": app.capitalize()
-        })
+        challenge_text = list(Month.objects.all())
+        for month_challenge in challenge_text:
+            return render(request, "month/app.html", {
+                "text": month_challenge.value,
+                "month": app.capitalize()
+            })
     except:
         return HttpResponseNotFound("<h2>This app is not found!</h2>")
