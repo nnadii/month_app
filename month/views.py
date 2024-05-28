@@ -31,7 +31,7 @@ def app_settings(request, app):
         challenge_text = list(Month.objects.all())
         for month_challenge in challenge_text:
             return render(request, "month/app.html", {
-                "text": month_challenge.value,
+                "text": month_challenge,
                 "month": app.capitalize()
             })
     except:
