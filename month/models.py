@@ -6,4 +6,3 @@ from django.db import models
 class Month(models.Model):
     name = models.CharField(max_length=50)
     age = models.CharField(max_length=50)
-    school = models.CharField(max_length=100)
