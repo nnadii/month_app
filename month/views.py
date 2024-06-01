@@ -19,7 +19,7 @@ def app_settings_with_number(request, app):
     application_month = list(all_months)
 
     if app > len(application_month):
-        return HttpResponseNotFound("<h2>Invalid month</h2>")
+        return HttpResponseNotFound("<h3>Invalid month</h3>")
 
     redirect_app = application_month[app - 1]
     redirect_path = reverse("app_challenge", args=[redirect_app])
